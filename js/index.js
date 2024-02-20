@@ -1,5 +1,5 @@
 function clickPlayNow() {
-  playGame = true;
+  isPlayGame = true;
   addHiddenClass("home");
   addHiddenClass("score");
   removeHiddenClass("playGames");
@@ -10,10 +10,10 @@ function clickPlayNow() {
   continueGame();
 }
 
-let playGame = false;
+let isPlayGame = false;
 
 document.addEventListener("keyup", function (event) {
-  if (playGame === false) {
+  if (isPlayGame === false) {
     return;
   } else {
     console.log("clicked");
@@ -34,10 +34,17 @@ document.addEventListener("keyup", function (event) {
 
       continueGame();
     } else {
-      audio.src="../sound/mixkit-game-show-wrong-answer-buzz-950.wav";
+      audio.src = "../sound/mixkit-game-show-wrong-answer-buzz-950.wav";
       audio.play();
+
       const getLife = getParsInValueById("life-point");
       const lostLife = getLife - 1;
+
+      const updatedLife = (lostLife / 5) * 100;
+      
+      let artBoard = document.getElementById("art-board");
+      artBoard.style.background = `linear-gradient(#ffffffB3 ${updatedLife}%, red)`;
+
       setValueById("life-point", lostLife);
       if (lostLife === 0) {
         gameOver();
@@ -94,4 +101,7 @@ function gameOver() {
   setValueById("final-point", getValue);
   const getAlphabet = getValuById("alphabet");
   removeBackgroundColor(getAlphabet);
+  isPlayGame = false;
+  let artBoard = document.getElementById("art-board");
+  artBoard.style.background = "linear-gradient(#ffffffB3 100%, red)";
 }
