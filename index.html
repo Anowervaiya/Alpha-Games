@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplphabet games</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- tailwind css and daisyUI link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.0/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .anton-regular {
+        font-family: "Anton", sans-serif;
+        font-weight: 400;
+      }
+
+      .poppins-regular {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header></header>
+    <main
+      class="bg-[url('images/background.png')] min-h-screen bg-no-repeat bg-center poppins-regular"
+    >
+      <!-- home section  -->
+      <section id="home" class="">
+        <div
+          class="flex flex-col items-center min-h-screen justify-center space-y-14"
+        >
+          <h1 class="text-9xl text-center font-extrabold text-white">
+            ALPHABET CLASH
+          </h1>
+          <p class="text-white text-xl">
+            Unleash Your Keyboard Kung Fu : Press “Enter” to Play
+          </p>
+          <button
+            onclick="clickPlayNow()"
+            class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-white text-black hover:bg-gray-300"
+          >
+            Play Now
+          </button>
+        </div>
+      </section>
+      <!-- play games section -->
+      <section id="playGames" class="space-y-24 hidden">
+        <!-- artboard -->
+        <div class="pt-24">
+          <div
+            class="artboard artboard-horizontal phone-6 border-[20px] border-black rounded-lg mx-auto bg-[#ffffffB3]"
+          >
+            <span
+              id="alphabet"
+              class="flex justify-center items-center h-full text-9xl text-black font-semibold"
+              >Y</span
+            >
+          </div>
+        </div>
+        <!-- keyboard  -->
+        <div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="q" class="kbd bg-white text-black text-2xl">q</kbd>
+            <kbd id="w" class="kbd bg-white text-black text-2xl">w</kbd>
+            <kbd id="e" class="kbd bg-white text-black text-2xl">e</kbd>
+            <kbd id="r" class="kbd bg-white text-black text-2xl">r</kbd>
+            <kbd id="t" class="kbd bg-white text-black text-2xl">t</kbd>
+            <kbd id="y" class="kbd bg-white text-black text-2xl">y</kbd>
+            <kbd id="u" class="kbd bg-white text-black text-2xl">u</kbd>
+            <kbd id="i" class="kbd bg-white text-black text-2xl">i</kbd>
+            <kbd id="o" class="kbd bg-white text-black text-2xl">o</kbd>
+            <kbd id="p" class="kbd bg-white text-black text-2xl">p</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="a" class="kbd bg-white text-black text-2xl">a</kbd>
+            <kbd id="s" class="kbd bg-white text-black text-2xl">s</kbd>
+            <kbd id="d" class="kbd bg-white text-black text-2xl">d</kbd>
+            <kbd id="f" class="kbd bg-white text-black text-2xl">f</kbd>
+            <kbd id="g" class="kbd bg-white text-black text-2xl">g</kbd>
+            <kbd id="h" class="kbd bg-white text-black text-2xl">h</kbd>
+            <kbd id="j" class="kbd bg-white text-black text-2xl">j</kbd>
+            <kbd id="k" class="kbd bg-white text-black text-2xl">k</kbd>
+            <kbd id="l" class="kbd bg-white text-black text-2xl">l</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="z" class="kbd bg-white text-black text-2xl">z</kbd>
+            <kbd id="x" class="kbd bg-white text-black text-2xl">x</kbd>
+            <kbd id="c" class="kbd bg-white text-black text-2xl">c</kbd>
+            <kbd id="v" class="kbd bg-white text-black text-2xl">v</kbd>
+            <kbd id="b" class="kbd bg-white text-black text-2xl">b</kbd>
+            <kbd id="n" class="kbd bg-white text-black text-2xl">n</kbd>
+            <kbd id="m" class="kbd bg-white text-black text-2xl">m</kbd>
+            <kbd id="/" class="kbd bg-white text-black text-2xl">/</kbd>
+          </div>
+        </div>
+        <!-- buttons -->
+        <div>
+          <div class="flex justify-between w-3/6 mx-auto">
+            <button
+              class="btn bg-primary rounded-3xl hover:bg-primary text-white text-2xl"
+            >
+              <span>Likes</span>
+              <img src="images/Group 23.png" alt="" />
+              <span id="life-point">1</span>
+            </button>
+            <button
+              class="btn bg-primary rounded-3xl hover:bg-primary text-white text-2xl"
+            >
+              <span>Scores</span>
+              <img src="images/monetization_on.png" alt="" />
+              <span id="score-point">1</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- play again section -->
+      <section id="score" class="hidden">
+        <div
+          class="min-h-screen bg-transparent flex flex-col justify-center items-center"
+        >
+          <div
+            class="border-2 border-black flex flex-col justify-center items-center gap-8 p-10 rounded-lg"
+          >
+            <h1 class="text-7xl font-extrabold text-white">
+              Scores :
+              <span id="final-point">0</span>
+            </h1>
+            <button
+              id="playAgain"
+              onclick="clickPlayNow()"
+              class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-white text-black hover:bg-gray-300"
+            >
+              Play again
+            </button>
+            <p class="text-white text-2xl font-semibold">
+              Practice will make you Pro
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/utility.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
